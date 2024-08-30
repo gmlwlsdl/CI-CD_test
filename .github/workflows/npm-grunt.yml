@@ -16,6 +16,9 @@ jobs:
     - name: Check Node v            # Node v 확인
       run: node -v
 
+    - name: Install dependencies    # 의존 파일 설치
+      run: npm install pnpm
+
     - name: Build
       run: |
         pnpm run dev
