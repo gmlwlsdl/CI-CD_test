@@ -13,12 +13,14 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Check Node v            # Node v 확인
+    - name: Install pnpm globally
+      run: npm install -g pnpm
+
+    - name: Check Node.js version
       run: node -v
 
-    - name: Install dependencies    # 의존 파일 설치
-      run: npm install pnpm
+    - name: Install dependencies
+      run: pnpm install
 
     - name: Build
-      run: |
-        pnpm run dev
+      run: pnpm run dev
