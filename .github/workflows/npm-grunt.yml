@@ -65,5 +65,5 @@ jobs:
       # Deploy Docker container (example deployment command)
       - name: Deploy Docker container
         run: |
-          docker pull sanbonai06/bankids-client:latest
-          docker run -d --name my_app -p 8080:80 sanbonai06/bankids-client:latest
+          docker pull ${{ secrets.DOCKERHUB_USER }}/ci-cd_test:latest
+          docker run -d --name my_app -p 8080:80 ${{ secrets.DOCKERHUB_USER }}/ci-cd_test:latest
