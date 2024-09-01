@@ -30,17 +30,6 @@ jobs:
       - name: Build
         run: pnpm run build
 
-      # Docker meta information
-      - name: Docker meta
-        id: docker_meta
-        uses: crazy-max/ghaction-docker-meta@v1
-        with:
-          images: ${{ secrets.DOCKERHUB_USER }}/ci-cd_test
-          tag-semver: |
-            latest
-            {{version}}
-            {{major}}.{{minor}}
-
       # Set up Docker Buildx
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
@@ -60,8 +49,7 @@ jobs:
           file: ./Dockerfile
           platforms: linux/amd64
           push: true
-          tags: ${{ steps.docker_meta.outputs.tags }}
-          labels: ${{ steps.docker_meta.outputs.labels }}
+          tags: ${{ secrets.DOCKERHUB_USER }}/ci-cd_test:latest
 
       # Deploy Docker container (example deployment command)
       - name: Deploy Docker container
