@@ -35,10 +35,11 @@ jobs:
         id: docker_meta
         uses: crazy-max/ghaction-docker-meta@v1
         with:
-          images: sanbonai06/bankids-client
+          images: ${{ secrets.DOCKERHUB_USER }}/ci-cd_test
           tag-semver: |
             {{version}}
             {{major}}.{{minor}}
+            latest
 
       # Set up Docker Buildx
       - name: Set up Docker Buildx
