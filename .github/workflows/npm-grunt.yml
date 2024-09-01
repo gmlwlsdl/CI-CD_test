@@ -37,9 +37,9 @@ jobs:
         with:
           images: ${{ secrets.DOCKERHUB_USER }}/ci-cd_test
           tag-semver: |
+            latest
             {{version}}
             {{major}}.{{minor}}
-            latest
 
       # Set up Docker Buildx
       - name: Set up Docker Buildx
